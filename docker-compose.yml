@@ -31,6 +31,7 @@ services:
     ports:
       - "4000:4000"
     environment:
+      - NODE_ENV=development
       - PRISMA_HOST=${PRISMA_HOST}
       - PRISMA_SECRET=${PRISMA_SECRET}
       - GOOGLE_CLIENT_ID=${GOOGLE_CLIENT_ID}
