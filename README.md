@@ -57,7 +57,7 @@ This removes all the containers.
 It is recommended to pull the latest images before spinning up the containers, especially if `phoenix` or `ladybird` images have been updated, and you want to use them.
 
 ```sh
-docker-compose pull
+docker compose pull
 ```
 
 ## Troubleshooting
@@ -82,8 +82,10 @@ docker volume rm development-setup_rctech-dev
 
 ### Prisma migration and client generation
 
-Phoenix's `rctechclub/phoenix:dev` image makes sure to run `prisma migrate deploy`, and `prisma generate` to make sure that
+All of Phoenix's `rctechclub/phoenix` docker images will run `prisma migrate deploy` to make sure that
 - the `postgres` database is in-sync with the prisma schema
 - the `@prisma/client` is connected to the correct database on your local machine
 
-**The production images (`rctechclub/phoenix:latest` or `rctechclub/phoenix:prod`) do not perform this step.**
+### Prisma Studio
+
+If you want access to the database through prisma studio, go to the `phoenix` repository and run `npx prisma studio`. But make sure that the `.env` from this `development-setup` folder is copied over to `phoenix`.

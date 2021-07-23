@@ -8,11 +8,13 @@ services:
       POSTGRES_PASSWORD: ${DB_PASSWORD}
     volumes:
       - rctech-dev:/var/lib/postgresql/data/
+    ports:
+      - 5432:5432
   phoenix:
     image: rctechclub/phoenix:dev
     restart: always
     ports:
-      - "4000:4000"
+      - 4000:4000
     environment:
       - NODE_ENV=development
       - DATABASE_URL=${DATABASE_URL}
@@ -27,7 +29,7 @@ services:
     image: rctechclub/ladybird:latest
     restart: always
     ports:
-      - "3001:80"
+      - 3001:80
     depends_on:
       - phoenix
 
